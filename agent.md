@@ -8,6 +8,7 @@ This repository is Hao Yunlai's GitHub Pages CV site. Future agents should treat
 - Positioning: robotics control, reinforcement learning, Sim2Real, dynamics modeling, and embodied intelligence.
 - Audience: prospective supervisors, research groups, collaborators, and technically serious visitors.
 - Tone: concise, research-oriented, bilingual where useful, privacy-aware.
+- Visual direction: personal CV / academic homepage, not a product landing page. Avoid oversized marketing heroes, product-style metric panels, feature-card sales copy, and public-facing maintenance instructions.
 
 ## Repository Facts
 

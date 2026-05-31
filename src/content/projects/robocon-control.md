@@ -11,7 +11,8 @@ methods:
   - "ROS2 system integration"
   - "RK3588 and STM32H7 control stack"
   - "Multi-motor coordination and real-time debugging"
-previewLabel: "Preview slot: mechanism debugging clip"
+mediaStatus: "Video and images available; publish only competition-safe clips."
+previewLabel: "RoboCON mechanism debug preview"
 fullDemoUrl: ""
 privacyNote: "Avoid exposing team-private mechanism details, internal wiring labels, or competition strategy material."
 ---

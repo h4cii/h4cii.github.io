@@ -11,7 +11,8 @@ methods:
   - "URDF-based robot modeling"
   - "Observation and reward design"
   - "Policy robustness under actuator and terrain mismatch"
-previewLabel: "Preview slot: locomotion policy rollout"
+mediaStatus: "Video and images available; publish as sanitized short preview clips."
+previewLabel: "Quadruped locomotion preview"
 fullDemoUrl: ""
 privacyNote: "Use cropped clips that avoid lab identifiers, terminal paths, and unpublished robot configuration details."
 ---

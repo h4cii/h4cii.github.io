@@ -18,7 +18,7 @@ const profile = [
   ['Education', 'Applied Physics undergraduate, Southwest Jiaotong University'],
   ['Research', 'Robotics control, reinforcement learning, dynamics modeling, embodied intelligence'],
   ['Academic note', 'Top-ranked undergraduate with national scholarship experience'],
-  ['Contact', 'hyl00250083@outlook.com']
+  ['CV', 'PDF resume attached for full details']
 ];
 
 const stack = [
@@ -27,6 +27,13 @@ const stack = [
   ['Control / Modeling', 'MPPI, nonlinear dynamics, Brush Model, MATLAB, Simulink, Simscape Multibody'],
   ['Embedded', 'STM32H7, RK3588, C/C++, Linux robot systems'],
   ['Development', 'Python, C++, Git, Docker, Distrobox, Arch Linux, Ubuntu']
+];
+
+const commandLines = [
+  'ros2 launch robot bringup.launch.py',
+  'python train.py task=quadruped_locomotion',
+  'mppi --model brush_tire --mode drift',
+  'export policy.onnx -> real_robot'
 ];
 ---
 
@@ -44,7 +51,7 @@ const stack = [
   <body>
     <main class="page-shell">
       <header class="masthead" aria-labelledby="page-title">
-        <div>
+        <section class="intro">
           <p class="label">Personal Research Homepage</p>
           <h1 id="page-title">Hao Yunlai</h1>
           <p class="subtitle">
@@ -54,26 +61,41 @@ const stack = [
           <p class="subtitle zh">
             从真实机器人控制问题出发，关注四足运动控制、Sim2Real、MPPI、World Model 与 VLA。
           </p>
-        </div>
-        <address class="contact-line" aria-label="Contact links">
-          <a href="mailto:hyl00250083@outlook.com">Email</a>
-          <a href="https://github.com/h4cii">GitHub</a>
-          <span>SWJTU / Applied Physics</span>
-        </address>
+          <div class="contact-row" aria-label="Contact and profile links">
+            <a href="mailto:hyl00250083@outlook.com">Email</a>
+            <a href="https://github.com/h4cii">GitHub</a>
+            <a href="/resume/hao-yunlai-cv.pdf">CV PDF</a>
+          </div>
+        </section>
+
+        <aside class="terminal-card" aria-label="Robotics workflow notes">
+          <div class="terminal-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>robot-lab</strong>
+          </div>
+          <div class="terminal-body">
+            <p><b>hao@robot-lab</b>:~$ whoami</p>
+            <p>robotics_control + rl + sim2real</p>
+            {commandLines.map((line) => <p><b>$</b> {line}</p>)}
+          </div>
+        </aside>
       </header>
 
       <nav class="quick-links" aria-label="Page sections">
         <a href="#profile">Profile</a>
         <a href="#projects">Projects</a>
-        <a href="#demos">Debug Videos</a>
-        <a href="#cv">CV Snapshot</a>
+        <a href="#demos">Demos</a>
+        <a href="#artifacts">Artifacts</a>
+        <a href="#cv">CV</a>
       </nav>
 
       <div class="content-grid">
         <article class="main-column">
           <section class="section" id="profile" aria-labelledby="profile-title">
             <p class="label">Research Profile</p>
-            <h2 id="profile-title">Control-oriented robotics and embodied intelligence</h2>
+            <h2 id="profile-title">Control-oriented robotics, with a real-hardware bias</h2>
             <div class="essay">
               <p>
                 My work starts from deployable robot control: building dynamics-aware
@@ -81,7 +103,7 @@ const stack = [
                 useful behavior onto physical robots.
               </p>
               <p>
-                I am especially interested in the meeting point of model-based control,
+                I am interested in the meeting point of model-based control,
                 reinforcement learning, world models, and vision-language-action systems.
                 The practical question behind the work is simple: how can a policy become
                 reliable enough to matter on hardware?
@@ -117,6 +139,7 @@ const stack = [
                       <ul>
                         {project.data.methods.map((method) => <li>{method}</li>)}
                       </ul>
+                      {project.data.mediaStatus && <p class="media-status">{project.data.mediaStatus}</p>}
                     </div>
                   </article>
                 ))
@@ -125,11 +148,11 @@ const stack = [
           </section>
 
           <section class="section" id="demos" aria-labelledby="demos-title">
-            <p class="label">Debug Videos</p>
-            <h2 id="demos-title">Short demo evidence</h2>
+            <p class="label">Debug Videos and Images</p>
+            <h2 id="demos-title">Robot evidence, added only when public-safe</h2>
             <p class="section-note">
-              This area is reserved for sanitized short clips. Full raw debugging videos should
-              stay external unless they are already public-safe.
+              RoboCON and quadruped RL have video/image materials. The homepage keeps compact
+              preview slots here; full raw debugging videos should stay external or private until sanitized.
             </p>
 
             <div class="demo-list">
@@ -150,8 +173,8 @@ const stack = [
                         </video>
                       ) : (
                         <div class="demo-placeholder">
-                          <span>Preview pending</span>
-                          <small>{project.data.previewLabel}</small>
+                          <span>{project.data.previewLabel}</span>
+                          <small>{project.data.mediaStatus || 'Preview asset pending.'}</small>
                         </div>
                       )}
                     </div>
@@ -161,7 +184,7 @@ const stack = [
                       {project.data.fullDemoUrl ? (
                         <a class="text-link" href={project.data.fullDemoUrl}>Watch full demo</a>
                       ) : (
-                        <span class="muted-link">Full demo link pending</span>
+                        <span class="muted-link">Demo link pending</span>
                       )}
                     </div>
                   </article>
@@ -171,7 +194,7 @@ const stack = [
           </section>
         </article>
 
-        <aside class="side-column" aria-label="CV snapshot">
+        <aside class="side-column" aria-label="CV and research artifacts">
           <section class="aside-block" id="cv">
             <p class="label">CV Snapshot</p>
             <dl class="profile-list">
@@ -184,6 +207,25 @@ const stack = [
                 ))
               }
             </dl>
+            <a class="cv-button" href="/resume/hao-yunlai-cv.pdf">Download CV PDF</a>
+          </section>
+
+          <section class="aside-block" id="artifacts">
+            <p class="label">Research Artifacts</p>
+            <div class="artifact-list">
+              <div>
+                <strong>Preprint</strong>
+                <span>arXiv link will be added after public release.</span>
+              </div>
+              <div>
+                <strong>Paper figure</strong>
+                <span>Paper screenshot/figure slot reserved for future public material.</span>
+              </div>
+              <div>
+                <strong>Robot demos</strong>
+                <span>Short RoboCON and quadruped RL previews can be embedded here.</span>
+              </div>
+            </div>
           </section>
 
           <section class="aside-block">
@@ -208,15 +250,19 @@ const stack = [
 <style>
   :root {
     color-scheme: light;
-    --bg: #f6f7f9;
-    --paper: #ffffff;
+    --bg: #f3f0e8;
+    --paper: #fffdf7;
     --ink: #182235;
     --muted: #667085;
-    --soft: #f0f3f7;
-    --line: #d9e0ea;
-    --blue: #2558a7;
-    --green: #19715f;
-    --red: #a7444f;
+    --line: #d9d2c2;
+    --soft: #f8f4ea;
+    --terminal: #121821;
+    --terminal-line: #273241;
+    --blue: #285ea8;
+    --green: #12715f;
+    --cyan: #0f8095;
+    --amber: #a86a13;
+    --red: #9f3f51;
   }
 
   * {
@@ -229,7 +275,11 @@ const stack = [
 
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      linear-gradient(90deg, rgba(18, 24, 33, 0.035) 1px, transparent 1px),
+      linear-gradient(rgba(18, 24, 33, 0.03) 1px, transparent 1px),
+      var(--bg);
+    background-size: 28px 28px;
     color: var(--ink);
     font-family:
       Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -245,15 +295,15 @@ const stack = [
 
   .page-shell {
     width: calc(100% - 36px);
-    max-width: 1080px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 40px 0 72px;
+    padding: 36px 0 72px;
   }
 
   .masthead {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    gap: 36px;
     align-items: end;
     border-bottom: 2px solid var(--ink);
     padding-bottom: 28px;
@@ -261,7 +311,8 @@ const stack = [
 
   .label {
     margin: 0 0 10px;
-    color: var(--blue);
+    color: var(--cyan);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0;
@@ -290,7 +341,7 @@ const stack = [
 
   h1 {
     margin-bottom: 14px;
-    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    font-size: clamp(2.7rem, 6vw, 4.9rem);
     line-height: 0.98;
     letter-spacing: 0;
   }
@@ -317,22 +368,90 @@ const stack = [
   }
 
   .subtitle.zh {
-    color: var(--muted);
+    color: #59677d;
     font-size: 1rem;
   }
 
-  .contact-line {
-    display: grid;
-    gap: 6px;
-    min-width: 210px;
-    margin: 0;
-    color: var(--muted);
-    font-style: normal;
-    text-align: right;
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
   }
 
-  .contact-line span {
-    color: #39465b;
+  .contact-row a,
+  .cv-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0 12px;
+    background: rgba(255, 253, 247, 0.82);
+    color: var(--ink);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .contact-row a:first-child,
+  .cv-button {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .terminal-card {
+    overflow: hidden;
+    border: 1px solid var(--terminal-line);
+    border-radius: 8px;
+    background: var(--terminal);
+    box-shadow: 8px 8px 0 rgba(40, 94, 168, 0.13);
+  }
+
+  .terminal-topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--terminal-line);
+    padding: 10px 14px;
+    color: #9fb1c7;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 0.82rem;
+  }
+
+  .terminal-topbar span {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #e36b6b;
+  }
+
+  .terminal-topbar span:nth-child(2) {
+    background: #d2a63b;
+  }
+
+  .terminal-topbar span:nth-child(3) {
+    background: #2aa879;
+  }
+
+  .terminal-topbar strong {
+    margin-left: auto;
+    font-weight: 700;
+  }
+
+  .terminal-body {
+    padding: 14px;
+    color: #d8e5f2;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 0.84rem;
+  }
+
+  .terminal-body p {
+    margin-bottom: 8px;
+  }
+
+  .terminal-body b {
+    color: #4fd1aa;
   }
 
   .quick-links {
@@ -346,13 +465,13 @@ const stack = [
 
   .quick-links a {
     color: #344054;
-    font-weight: 700;
+    font-weight: 750;
     text-decoration: none;
   }
 
   .content-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 310px;
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 42px;
     align-items: start;
   }
@@ -394,14 +513,15 @@ const stack = [
 
   .project-list,
   .demo-list,
-  .stack-list {
+  .stack-list,
+  .artifact-list {
     display: grid;
     gap: 18px;
   }
 
   .project-entry {
     display: grid;
-    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-columns: 215px minmax(0, 1fr);
     gap: 24px;
     padding: 22px 0;
     border-top: 1px solid var(--line);
@@ -415,14 +535,21 @@ const stack = [
   .project-meta > span {
     display: block;
     color: var(--red);
-    font-size: 0.86rem;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 0.82rem;
     font-weight: 750;
   }
 
   .project-body p,
   .section-note,
-  .demo-copy p {
+  .demo-copy p,
+  .media-status {
     color: #48566d;
+  }
+
+  .media-status {
+    margin: 12px 0 0;
+    font-size: 0.92rem;
   }
 
   ul {
@@ -437,37 +564,41 @@ const stack = [
 
   .demo-entry {
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-columns: 248px minmax(0, 1fr);
     gap: 20px;
     align-items: stretch;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: var(--paper);
+    background: rgba(255, 253, 247, 0.86);
     padding: 14px;
   }
 
   .demo-media {
-    min-height: 150px;
-    border: 1px solid var(--line);
+    min-height: 146px;
+    border: 1px solid #c8d5d2;
     border-radius: 6px;
     overflow: hidden;
-    background: var(--soft);
+    background:
+      linear-gradient(135deg, rgba(18, 113, 95, 0.18), transparent 42%),
+      linear-gradient(315deg, rgba(40, 94, 168, 0.18), transparent 46%),
+      #182235;
   }
 
   video {
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 150px;
+    min-height: 146px;
     object-fit: cover;
   }
 
   .demo-placeholder {
     display: grid;
     align-content: center;
-    min-height: 150px;
+    min-height: 146px;
     padding: 16px;
-    color: #344054;
+    color: #e8f3ef;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   }
 
   .demo-placeholder span {
@@ -475,7 +606,7 @@ const stack = [
   }
 
   .demo-placeholder small {
-    color: var(--muted);
+    color: #aebfc7;
   }
 
   .demo-copy {
@@ -507,7 +638,7 @@ const stack = [
   .profile-list {
     display: grid;
     gap: 10px;
-    margin: 0;
+    margin: 0 0 16px;
   }
 
   .profile-list dt {
@@ -521,6 +652,7 @@ const stack = [
     color: #29364d;
   }
 
+  .artifact-list div,
   .stack-item {
     display: grid;
     gap: 3px;
@@ -528,16 +660,26 @@ const stack = [
     padding-left: 12px;
   }
 
+  .artifact-list div:nth-child(2) {
+    border-left-color: var(--blue);
+  }
+
+  .artifact-list div:nth-child(3) {
+    border-left-color: var(--amber);
+  }
+
+  .artifact-list strong,
   .stack-item strong {
     color: #243047;
   }
 
+  .artifact-list span,
   .stack-item span {
     color: var(--muted);
     font-size: 0.94rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 930px) {
     .page-shell {
       width: calc(100% - 24px);
       padding-top: 28px;
@@ -550,9 +692,8 @@ const stack = [
       grid-template-columns: 1fr;
     }
 
-    .contact-line {
-      min-width: 0;
-      text-align: left;
+    .terminal-card {
+      max-width: 520px;
     }
 
     .side-column {
@@ -566,8 +707,13 @@ const stack = [
       font-size: 2.8rem;
     }
 
-    .quick-links {
-      gap: 12px;
+    .quick-links,
+    .contact-row {
+      gap: 10px;
+    }
+
+    .contact-row a {
+      flex: 1 1 auto;
     }
 
     .section {

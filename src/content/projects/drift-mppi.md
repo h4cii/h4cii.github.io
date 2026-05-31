@@ -11,7 +11,8 @@ methods:
   - "Brush Model tire-ground interaction"
   - "Model Predictive Path Integral control"
   - "Trajectory tracking in highly nonlinear regimes"
-previewLabel: "Preview slot: drift trajectory debugging"
+mediaStatus: "Research artifact planned; add arXiv and paper figure after public release."
+previewLabel: "Drift control research artifact"
 fullDemoUrl: ""
 privacyNote: "Publish only sanitized simulation or cropped robot clips; keep unpublished experiment details out of overlays."
 ---

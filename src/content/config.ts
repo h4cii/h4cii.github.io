@@ -9,6 +9,7 @@ const projects = defineCollection({
     status: z.string(),
     focus: z.array(z.string()),
     methods: z.array(z.string()),
+    mediaStatus: z.string().optional(),
     previewLabel: z.string(),
     previewSrc: z.string().optional(),
     fullDemoUrl: z.string().optional(),

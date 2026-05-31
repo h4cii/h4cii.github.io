@@ -8,7 +8,7 @@ This repository is Hao Yunlai's GitHub Pages CV site. Future agents should treat
 - Positioning: robotics control, reinforcement learning, Sim2Real, dynamics modeling, and embodied intelligence.
 - Audience: prospective supervisors, research groups, collaborators, and technically serious visitors.
 - Tone: concise, research-oriented, bilingual where useful, privacy-aware.
-- Visual direction: personal CV / academic homepage, not a product landing page. Avoid oversized marketing heroes, product-style metric panels, feature-card sales copy, and public-facing maintenance instructions.
+- Visual direction: personal CV / academic homepage with a light geek/robot-debugging feel. Prefer paper-like layout, compact CV structure, restrained terminal/code accents, and robot evidence sections. Avoid full black-background academic severity, oversized marketing heroes, product-style metric panels, feature-card sales copy, and public-facing maintenance instructions.
 
 ## Repository Facts
 
@@ -19,6 +19,7 @@ This repository is Hao Yunlai's GitHub Pages CV site. Future agents should treat
 - Project content lives in `src/content/projects/*.md`.
 - Project schema is defined in `src/content/config.ts`.
 - Preview video assets should go under `public/media/previews/`.
+- Public resume attachment is `public/resume/hao-yunlai-cv.pdf`.
 - GitHub Actions deployment workflow is `.github/workflows/deploy.yml`.
 - `astro.config.mjs` sets `site: 'https://h4cii.github.io'`; do not add `base` for this user site.
 
@@ -30,6 +31,7 @@ Allowed public information:
 - School and broad academic identity: SWJTU / Applied Physics undergraduate.
 - Email: `hyl00250083@outlook.com`.
 - Research interests, project categories, generalized technical stack, and generalized achievement language.
+- A public resume PDF may be linked, but the homepage body should still keep sensitive details summarized.
 
 Do not expose:
 
@@ -46,6 +48,8 @@ Use generalized phrasing such as:
 - `national-level robotics competition experience`
 - `publishable robotics/control research contribution`
 
+The attached resume PDF may contain more detailed personal information than the homepage. Do not copy those details into page text unless explicitly requested and reviewed for public exposure.
+
 ## Video Policy
 
 - The homepage should show short sanitized preview clips, not full raw debugging videos.
@@ -55,6 +59,8 @@ Use generalized phrasing such as:
 - Full-resolution demos should be linked externally through Bilibili, YouTube, GitHub Releases, object storage, or another stable host.
 - Before publishing any video, crop or blur sensitive lab background, terminal paths, usernames, IP addresses, device IDs, wiring labels, unreleased mechanism details, and paper-specific experimental details.
 - If no video is available yet, keep the current placeholder card instead of adding fake media.
+- RoboCON and quadruped RL materials are expected to have real videos/images available later. Use those assets as evidence, not decoration.
+- Drift/MPPI research may later add an arXiv link and a paper screenshot/figure after public release.
 
 To add a preview video:
 

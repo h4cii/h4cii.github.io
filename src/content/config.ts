@@ -9,6 +9,12 @@ const projects = defineCollection({
     status: z.string(),
     focus: z.array(z.string()),
     methods: z.array(z.string()),
+    demos: z.array(z.object({
+      title: z.string(),
+      src: z.string(),
+      caption: z.string(),
+      muted: z.boolean().optional()
+    })).optional(),
     mediaStatus: z.string().optional(),
     previewLabel: z.string(),
     previewSrc: z.string().optional(),

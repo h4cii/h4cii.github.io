@@ -11,7 +11,16 @@ methods:
   - "URDF-based robot modeling"
   - "Observation and reward design"
   - "Policy robustness under actuator and terrain mismatch"
-mediaStatus: "Video and images available; publish as sanitized short preview clips."
+demos:
+  - title: "Slope and stair traversal"
+    src: "/media/previews/quadruped-slope-stairs.mp4"
+    caption: "Quadruped robot traversing a slope and stairs-like terrain."
+    muted: false
+  - title: "Flat-ground Sim2Real deployment"
+    src: "/media/previews/quadruped-flat-sim2real-muted.mp4"
+    caption: "Real robot flat-ground movement after Sim2Real deployment. Audio track removed for public display."
+    muted: true
+mediaStatus: "Two homepage clips embedded: terrain traversal and muted flat-ground Sim2Real."
 previewLabel: "Quadruped locomotion preview"
 fullDemoUrl: ""
 privacyNote: "Use cropped clips that avoid lab identifiers, terminal paths, and unpublished robot configuration details."

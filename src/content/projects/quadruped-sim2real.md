@@ -13,11 +13,11 @@ methods:
   - "MuJoCo Sim2Sim validation and ROS2-based real-robot action/state interface"
 demos:
   - title: "Slope and stair traversal"
-    src: "/media/previews/dfa108-slope-stairs.mp4"
+    src: "/media/previews/bb710-slope-stairs.mp4"
     caption: "Quadruped robot traversing a slope and stairs-like terrain."
     muted: false
   - title: "Flat-ground Sim2Real deployment"
-    src: "/media/previews/bb710-flat-sim2real-muted.mp4"
+    src: "/media/previews/dfa108-flat-sim2real-muted.mp4"
     caption: "Real robot flat-ground movement after Sim2Real deployment. Audio track removed for public display."
     muted: true
 mediaStatus: "Homepage clips show terrain traversal and muted flat-ground Sim2Real deployment."

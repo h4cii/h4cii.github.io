@@ -9,31 +9,31 @@ const interests = [
   'Sim2Real',
   'Robot dynamics',
   'MPPI',
-  'World models',
-  'VLA',
-  'Embodied AI'
+  'Friction-aware control',
+  'Embedded robot systems',
+  'Legged robot hardware'
 ];
 
 const profile = [
-  ['Education', 'Applied Physics undergraduate, Southwest Jiaotong University'],
-  ['Research', 'Robotics control, reinforcement learning, dynamics modeling, embodied intelligence'],
-  ['Academic note', 'Top-ranked undergraduate with national scholarship experience'],
-  ['CV', 'PDF resume attached for full details']
+  ['Education', 'Applied Physics B.Sc. candidate, Southwest Jiaotong University, 2023-2027'],
+  ['Academic record', 'GPA 3.92/4.00, average score 91.91/100, ranked 2/196 in major'],
+  ['Research', 'RL quadruped locomotion, Sim2Real deployment, friction-aware MPPI, robot dynamics'],
+  ['Honors', 'National Scholarship 2024/2025; multiple national robotics and modeling awards']
 ];
 
 const stack = [
-  ['Robotics', 'ROS2, real robot deployment, multi-motor control, real-time debugging'],
-  ['RL / Simulation', 'Isaac Lab, Isaac Sim, PPO, RSL-RL, PyTorch, domain randomization'],
-  ['Control / Modeling', 'MPPI, nonlinear dynamics, Brush Model, MATLAB, Simulink, Simscape Multibody'],
-  ['Embedded', 'STM32H7, RK3588, C/C++, Linux robot systems'],
-  ['Development', 'Python, C++, Git, Docker, Distrobox, Arch Linux, Ubuntu']
+  ['Robotics', 'ROS2, MuJoCo, real robot deployment, action mapping, state observation, closed-loop debugging'],
+  ['RL / Simulation', 'Isaac Lab, Isaac Sim 5.1, PPO, RSL-RL, PyTorch, domain randomization'],
+  ['Control / Modeling', 'MPPI, nonlinear MPC, Brush Tire Model, Newton-Euler dynamics, MATLAB, Simscape'],
+  ['Embedded', 'STM32H7, RK3588, FreeRTOS, CAN/RS485, motor debugging for Unitree, Damiao, Lingzu'],
+  ['Development', 'Python, C/C++, MATLAB, Linux, Git, Docker, Arch Linux, Ubuntu']
 ];
 
 const commandLines = [
   'ros2 launch robot bringup.launch.py',
-  'python train.py task=quadruped_locomotion',
-  'mppi --model brush_tire --mode drift',
-  'export policy.onnx -> real_robot'
+  'python train.py task=quadruped_locomotion sim=isaac_lab',
+  'mppi --model brush_tire --terminal-value',
+  'sim2sim mujoco -> sim2real physical_robot'
 ];
 
 type DemoEntry =
@@ -88,7 +88,7 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Hao Yunlai's CV-style research homepage for robotics control, reinforcement learning, Sim2Real, and embodied AI."
+      content="Hao Yunlai's research homepage for quadruped robot control, reinforcement learning, Sim2Real, friction-aware MPPI, and embedded robot systems."
     />
     <title>Hao Yunlai | Robotics Control & Embodied AI</title>
   </head>
@@ -99,14 +99,16 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
           <p class="label">Personal Research Homepage</p>
           <h1 id="page-title">Hao Yunlai</h1>
           <p class="subtitle">
-            Applied Physics undergraduate at SWJTU. I work on robotics control,
-            reinforcement learning, Sim2Real, dynamics modeling, and embodied intelligence.
+            Applied Physics undergraduate at SWJTU, ranked 2/196 with a 3.92/4.00 GPA.
+            I work on quadruped robot control, reinforcement learning, Sim2Real,
+            friction-aware trajectory tracking, and embedded robot systems.
           </p>
           <p class="subtitle zh">
-            从真实机器人控制问题出发，关注四足运动控制、Sim2Real、MPPI、World Model 与 VLA。
+            我关注从仿真训练到实机闭环的机器人控制问题，主要方向包括四足机器人强化学习运动控制、
+            Sim2Real 部署、复杂地形稳定运动、摩擦感知 MPPI 与嵌入式实时控制系统。
           </p>
           <div class="contact-row" aria-label="Contact and profile links">
-            <a href="mailto:hyl00250083@outlook.com">Email</a>
+            <a href="mailto:haoyl42@163.com">Email</a>
             <a href="https://github.com/h4cii">GitHub</a>
             <a href="/resume/hao-yunlai-cv.pdf">CV PDF</a>
           </div>
@@ -142,19 +144,19 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
             <h2 id="profile-title">Control-oriented robotics, with a real-hardware bias</h2>
             <div class="essay">
               <p>
-                My work starts from deployable robot control: building dynamics-aware
-                policies in simulation, testing them under model mismatch, and moving
-                useful behavior onto physical robots.
+                My work starts from deployable robot control. I build simulation training
+                pipelines, design observations and domain randomization, verify policies
+                in MuJoCo, and move useful behavior onto physical quadruped hardware.
               </p>
               <p>
-                I am interested in the meeting point of model-based control,
-                reinforcement learning, world models, and vision-language-action systems.
-                The practical question behind the work is simple: how can a policy become
-                reliable enough to matter on hardware?
+                My current projects connect reinforcement learning, dynamics modeling,
+                sampling-based optimal control, and embedded implementation. The practical
+                question behind the work is simple: how can a controller stay reliable
+                under terrain changes, actuator limits, delay, noise, and model mismatch?
               </p>
               <p>
-                我希望把控制理论、强化学习和具身智能连接到真实机器人系统中，让算法不仅在仿真里表现好，
-                也能在硬件约束、噪声、延迟和模型误差下稳定工作。
+                我希望把控制理论、强化学习和机器人系统工程连接到真实硬件中，让算法不仅能在仿真里跑通，
+                也能在物理样机的通信延迟、电机约束、轮地/足地接触误差和复杂地形中稳定工作。
               </p>
             </div>
             <div class="interest-list" aria-label="Research interests">
@@ -260,15 +262,15 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
             <div class="artifact-list">
               <div>
                 <strong>Preprint</strong>
-                <span>arXiv link will be added after public release.</span>
+                <span>Friction-aware trajectory tracking with infinite-horizon-cost-augmented MPPI is under revision.</span>
               </div>
               <div>
-                <strong>Paper figure</strong>
-                <span>Paper screenshot/figure slot reserved for future public material.</span>
+                <strong>Academic record</strong>
+                <span>Ranked 2/196 in Applied Physics, with National Scholarship in 2024 and 2025.</span>
               </div>
               <div>
                 <strong>Robot demos</strong>
-                <span>Short RoboCON and quadruped RL previews can be embedded here.</span>
+                <span>Quadruped RL terrain traversal and flat-ground Sim2Real clips are embedded above.</span>
               </div>
             </div>
           </section>

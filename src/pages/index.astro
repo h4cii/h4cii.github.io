@@ -129,8 +129,8 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
 
       <nav class="quick-links" aria-label="Page sections">
         <a href="#profile">Profile</a>
-        <a href="#projects">Projects</a>
         <a href="#demos">Demos</a>
+        <a href="#projects">Projects</a>
         <a href="#artifacts">Artifacts</a>
         <a href="#cv">CV</a>
       </nav>
@@ -159,35 +159,6 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
             </div>
             <div class="interest-list" aria-label="Research interests">
               {interests.map((item) => <span>{item}</span>)}
-            </div>
-          </section>
-
-          <section class="section" id="projects" aria-labelledby="projects-title">
-            <p class="label">Selected Projects</p>
-            <h2 id="projects-title">Project experience</h2>
-
-            <div class="project-list">
-              {
-                projects.map((project) => (
-                  <article class="project-entry">
-                    <div class="project-meta">
-                      <span>{project.data.status}</span>
-                      <div class="tag-list" aria-label={`${project.data.title} focus areas`}>
-                        {project.data.focus.map((item) => <em>{item}</em>)}
-                      </div>
-                    </div>
-
-                    <div class="project-body">
-                      <h3>{project.data.title}</h3>
-                      <p>{project.data.subtitle}</p>
-                      <ul>
-                        {project.data.methods.map((method) => <li>{method}</li>)}
-                      </ul>
-                      {project.data.mediaStatus && <p class="media-status">{project.data.mediaStatus}</p>}
-                    </div>
-                  </article>
-                ))
-              }
             </div>
           </section>
 
@@ -231,6 +202,35 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
                       ) : (
                         <span class="muted-link">Demo link pending</span>
                       )}
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </section>
+
+          <section class="section" id="projects" aria-labelledby="projects-title">
+            <p class="label">Selected Projects</p>
+            <h2 id="projects-title">Project experience</h2>
+
+            <div class="project-list">
+              {
+                projects.map((project) => (
+                  <article class="project-entry">
+                    <div class="project-meta">
+                      <span>{project.data.status}</span>
+                      <div class="tag-list" aria-label={`${project.data.title} focus areas`}>
+                        {project.data.focus.map((item) => <em>{item}</em>)}
+                      </div>
+                    </div>
+
+                    <div class="project-body">
+                      <h3>{project.data.title}</h3>
+                      <p>{project.data.subtitle}</p>
+                      <ul>
+                        {project.data.methods.map((method) => <li>{method}</li>)}
+                      </ul>
+                      {project.data.mediaStatus && <p class="media-status">{project.data.mediaStatus}</p>}
                     </div>
                   </article>
                 ))
@@ -564,6 +564,11 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     gap: 18px;
   }
 
+  .demo-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
   .project-entry {
     display: grid;
     grid-template-columns: 215px minmax(0, 1fr);
@@ -609,19 +614,19 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
 
   .demo-entry {
     display: grid;
-    grid-template-columns: 248px minmax(0, 1fr);
-    gap: 20px;
+    grid-template-rows: auto 1fr;
     align-items: stretch;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: rgba(255, 253, 247, 0.86);
-    padding: 14px;
+    overflow: hidden;
+    padding: 0;
   }
 
   .demo-media {
-    min-height: 146px;
-    border: 1px solid #c8d5d2;
-    border-radius: 6px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+    border-bottom: 1px solid var(--line);
     overflow: hidden;
     background:
       linear-gradient(135deg, rgba(18, 113, 95, 0.18), transparent 42%),
@@ -633,16 +638,17 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 146px;
+    min-height: 0;
     object-fit: contain;
     background: #0e1622;
   }
 
   .demo-placeholder {
     display: grid;
-    align-content: center;
-    min-height: 146px;
-    padding: 16px;
+    height: 100%;
+    min-height: 0;
+    place-content: center;
+    padding: 18px;
     color: #e8f3ef;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   }
@@ -657,12 +663,22 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
 
   .demo-copy {
     display: grid;
-    align-content: center;
+    align-content: start;
+    padding: 16px;
+  }
+
+  .demo-copy p {
+    margin-bottom: 14px;
   }
 
   .demo-project {
-    margin-bottom: 4px;
-    color: var(--cyan);
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 12px;
+    border-radius: 999px;
+    padding: 3px 9px;
+    background: rgba(40, 94, 168, 0.12);
+    color: var(--blue);
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     font-size: 0.76rem;
     font-weight: 800;
@@ -742,8 +758,11 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
 
     .masthead,
     .content-grid,
-    .project-entry,
-    .demo-entry {
+    .project-entry {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-list {
       grid-template-columns: 1fr;
     }
 
@@ -776,7 +795,11 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     }
 
     .demo-entry {
-      padding: 12px;
+      padding: 0;
+    }
+
+    .demo-copy {
+      padding: 14px;
     }
   }
 </style>

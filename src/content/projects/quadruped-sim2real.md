@@ -15,6 +15,14 @@ methods:
   - "Friction, mass, center-of-mass, and initial-pose domain randomization for policy generalization"
   - "Modular deployment framework decoupling state observation, history caching, ONNX inference, action mapping, safety limits, and real-robot interfaces"
 demos:
+  - title: "Low-bar traversal"
+    src: "/media/previews/quadruped-low-bar.mp4"
+    caption: "New quadruped prototype traversing a low-bar obstacle with closed-loop locomotion control."
+    muted: false
+  - title: "High-wall climbing"
+    src: "/media/previews/quadruped-high-wall.mp4"
+    caption: "New quadruped prototype climbing a high-wall obstacle during terrain validation."
+    muted: false
   - title: "Slope and stair traversal"
     src: "/media/previews/bb710-slope-stairs.mp4"
     caption: "Quadruped robot traversing a slope and stairs-like terrain."
@@ -23,7 +31,7 @@ demos:
     src: "/media/previews/dfa108-flat-sim2real-muted.mp4"
     caption: "Real robot flat-ground movement after Sim2Real deployment. Audio track removed for public display."
     muted: true
-mediaStatus: "Homepage clips show terrain traversal and muted flat-ground Sim2Real deployment."
+mediaStatus: "Homepage clips show low-bar traversal, high-wall climbing, terrain traversal, and muted flat-ground Sim2Real deployment."
 previewLabel: "Quadruped locomotion preview"
 fullDemoUrl: ""
 privacyNote: "Use cropped clips that avoid lab identifiers, terminal paths, and unpublished robot configuration details."

@@ -19,7 +19,7 @@ This repository is Hao Yunlai's GitHub Pages CV site. Future agents should treat
 - Project content lives in `src/content/projects/*.md`.
 - Project schema is defined in `src/content/config.ts`.
 - Preview video assets should go under `public/media/previews/`.
-- Public resume attachment is `public/resume/hao-yunlai-cv.pdf`.
+- The resume PDF and CV snapshot are not published on this site.
 - GitHub Actions deployment workflow is `.github/workflows/deploy.yml`.
 - `astro.config.mjs` sets `site: 'https://h4cii.github.io'`; do not add `base` for this user site.
 
@@ -31,7 +31,6 @@ Allowed public information:
 - School and broad academic identity: SWJTU / Applied Physics undergraduate.
 - Email: `hyl00250083@outlook.com`.
 - Research interests, project categories, generalized technical stack, and generalized achievement language.
-- A public resume PDF may be linked, but the homepage body should still keep sensitive details summarized.
 
 Do not expose:
 
@@ -48,7 +47,7 @@ Use generalized phrasing such as:
 - `national-level robotics competition experience`
 - `publishable robotics/control research contribution`
 
-The attached resume PDF may contain more detailed personal information than the homepage. Do not copy those details into page text unless explicitly requested and reviewed for public exposure.
+The resume PDF and CV snapshot were removed for privacy. Do not restore a resume attachment, download link, or CV snapshot without explicit authorization. Keep sensitive personal details out of public page text.
 
 ## Video Policy
 

@@ -17,7 +17,7 @@ Place compressed preview videos in `public/media/previews/`. Keep each preview s
 - remove terminal paths, IP addresses, device IDs, and usernames
 - keep full-resolution videos on an external platform or GitHub Release
 
-The public PDF resume lives at `public/resume/hao-yunlai-cv.pdf`.
+The resume PDF is not published on this site.
 
 ## Deploy
 

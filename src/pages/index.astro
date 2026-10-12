@@ -14,13 +14,6 @@ const interests = [
   'Legged robot hardware'
 ];
 
-const profile = [
-  ['Education', 'Applied Physics B.Sc. candidate, Southwest Jiaotong University, 2023-2027'],
-  ['Academic record', 'GPA 3.92/4.00, average score 91.91/100, ranked 2/196 in major'],
-  ['Research', 'RL quadruped locomotion, Sim2Real deployment, friction-aware MPPI, robot dynamics'],
-  ['Honors', 'National Scholarship 2024/2025; multiple national robotics and modeling awards']
-];
-
 const stack = [
   ['Robotics', 'ROS2, MuJoCo, real robot deployment, action mapping, state observation, closed-loop debugging'],
   ['RL / Simulation', 'Isaac Lab, Isaac Sim 5.1, PPO, RSL-RL, PyTorch, domain randomization'],
@@ -110,7 +103,6 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
           <div class="contact-row" aria-label="Contact and profile links">
             <a href="mailto:haoyl42@163.com">Email</a>
             <a href="https://github.com/h4cii">GitHub</a>
-            <a href="/resume/hao-yunlai-cv.pdf">CV PDF</a>
           </div>
         </section>
 
@@ -134,7 +126,6 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
         <a href="#demos">Demos</a>
         <a href="#projects">Projects</a>
         <a href="#artifacts">Artifacts</a>
-        <a href="#cv">CV</a>
       </nav>
 
       <div class="content-grid">
@@ -240,22 +231,7 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
           </section>
         </article>
 
-        <aside class="side-column" aria-label="CV and research artifacts">
-          <section class="aside-block" id="cv">
-            <p class="label">CV Snapshot</p>
-            <dl class="profile-list">
-              {
-                profile.map(([label, value]) => (
-                  <>
-                    <dt>{label}</dt>
-                    <dd>{value}</dd>
-                  </>
-                ))
-              }
-            </dl>
-            <a class="cv-button" href="/resume/hao-yunlai-cv.pdf">Download CV PDF</a>
-          </section>
-
+        <aside class="side-column" aria-label="Research artifacts and technical stack">
           <section class="aside-block" id="artifacts">
             <p class="label">Research Artifacts</p>
             <div class="artifact-list">
@@ -425,8 +401,7 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     margin-top: 22px;
   }
 
-  .contact-row a,
-  .cv-button {
+  .contact-row a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -440,8 +415,7 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
     text-decoration: none;
   }
 
-  .contact-row a:first-child,
-  .cv-button {
+  .contact-row a:first-child {
     border-color: var(--green);
     color: var(--green);
   }
@@ -705,23 +679,6 @@ const demoEntries: DemoEntry[] = projects.flatMap<DemoEntry>((project) => {
   .aside-block {
     border-top: 2px solid var(--ink);
     padding: 18px 0 28px;
-  }
-
-  .profile-list {
-    display: grid;
-    gap: 10px;
-    margin: 0 0 16px;
-  }
-
-  .profile-list dt {
-    color: var(--muted);
-    font-size: 0.82rem;
-    font-weight: 800;
-  }
-
-  .profile-list dd {
-    margin: 0 0 10px;
-    color: #29364d;
   }
 
   .artifact-list div,
